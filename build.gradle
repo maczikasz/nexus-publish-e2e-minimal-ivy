@@ -93,7 +93,7 @@ signing {
     } else {
         useGpgCmd()
     }
-    sign publishing.publications.mavenJava
+    sign publishing.publications.ivy
 }
 //do not generate extra load on Nexus with new staging repository if signing fails
 tasks.withType(io.github.gradlenexus.publishplugin.InitializeNexusStagingRepository).configureEach {
