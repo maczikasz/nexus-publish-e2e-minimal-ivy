@@ -50,11 +50,9 @@ java {
 }
 
 nexusPublishing {
-    publicationType = io.github.gradlenexus.publishplugin.NexusRepository.PublicationType.IVY
     repositories {
         sonatype {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            publicationType = io.github.gradlenexus.publishplugin.NexusRepository.PublicationType.IVY
             stagingProfileId = "248647f1a45ed6" //can reduce execution time by even 10 seconds
         }
     }
@@ -93,7 +91,7 @@ signing {
     } else {
         useGpgCmd()
     }
-    sign publishing.publications.mavenJava
+    sign publishing.publications.ivy
 }
 //do not generate extra load on Nexus with new staging repository if signing fails
 tasks.withType(io.github.gradlenexus.publishplugin.InitializeNexusStagingRepository).configureEach {
